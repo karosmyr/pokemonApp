@@ -1,26 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changePerPage } from '../../store/pokeActions';
+import { changePerPage } from '../../store/pokemon-actions';
 import './PerPage.scss';
 
 const PerPage = () => {
 	const dispatch = useDispatch();
 	const pokeData = useSelector((state) => state.pokemons);
+	const filterData = useSelector((state) => state.filter);
 
 	const cardsPerPageHandler = (e) => {
 		dispatch(changePerPage(e.target.value));
 	};
 
-	const totalPageCount = Math.ceil(pokeData.totalCount / pokeData.pageSize);
+	const totalPageCount = Math.ceil(pokeData.totalCount / filterData.pageSize);
 
-	let toRange = pokeData.currentPage * pokeData.pageSize;
+	let toRange = filterData.currentPage * filterData.pageSize;
 
-	if (pokeData.currentPage === totalPageCount) {
+	if (filterData.currentPage === totalPageCount) {
 		toRange = pokeData.totalCount;
 	}
 
-	let fromRange = toRange - pokeData.pageSize + 1;
+	let fromRange = toRange - filterData.pageSize + 1;
 
-	if (pokeData.totalCount < pokeData.pageSize) {
+	if (pokeData.totalCount < filterData.pageSize) {
 		fromRange = 1;
 	}
 
@@ -38,7 +39,7 @@ const PerPage = () => {
 			)}
 			<div className='perPage__container-control'>
 				<label>Cards per page:</label>
-				<select value={pokeData.pageSize} onChange={cardsPerPageHandler}>
+				<select value={filterData.pageSize} onChange={cardsPerPageHandler}>
 					<option value='24'>24</option>
 					<option value='48'>48</option>
 					<option value='96'>96</option>

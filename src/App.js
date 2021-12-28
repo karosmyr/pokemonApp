@@ -6,11 +6,16 @@ import Layout from './components/Layout/Layout';
 import NotFound from './pages/NotFound';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPokemons, getAllPokeTypes, getAllPokeSubtypes } from './store/pokeActions'
+import {
+	getPokemons,
+	getAllPokeTypes,
+	getAllPokeSubtypes,
+} from './store/pokemon-actions';
 
 function App() {
 	const dispatch = useDispatch();
 	const pokeData = useSelector((state) => state.pokemons);
+	const filterData = useSelector(state => state.filter)
 
 	useEffect(() => {
 		dispatch(getAllPokeTypes());
@@ -18,26 +23,26 @@ function App() {
 	}, [dispatch]);
 
 	useEffect(() => {
-		localStorage.setItem('pokeApp-fav', JSON.stringify(pokeData.favPokemons))
+		localStorage.setItem('pokeApp-fav', JSON.stringify(pokeData.favPokemons));
 	}, [pokeData.favPokemons]);
 
 	useEffect(() => {
 		dispatch(
 			getPokemons(
-				pokeData.currentPage,
-				pokeData.pageSize,
-				pokeData.name,
-				pokeData.chosenType,
-				pokeData.chosenSubtype
+				filterData.currentPage,
+				filterData.pageSize,
+				filterData.name,
+				filterData.chosenType,
+				filterData.chosenSubtype
 			)
 		);
 	}, [
 		dispatch,
-		pokeData.currentPage,
-		pokeData.pageSize,
-		pokeData.name,
-		pokeData.chosenType,
-		pokeData.chosenSubtype,
+		filterData.currentPage,
+		filterData.pageSize,
+		filterData.name,
+		filterData.chosenType,
+		filterData.chosenSubtype,
 	]);
 
 	return (

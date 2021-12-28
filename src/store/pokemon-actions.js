@@ -54,13 +54,13 @@ export const getPokemonDetail = (pokemonId) => {
 
 export const addPokemonToFav = (pokemon) => {
 	return (dispatch) => {
-		dispatch(pokeActions.addPokemonToFav(pokemon));
+		dispatch(pokemonActions.addPokemonToFav(pokemon));
 	};
 };
 
 export const removePokemonFromFav = (pokemonId) => {
 	return (dispatch) => {
-		dispatch(pokeActions.removePokemonFromFav(pokemonId));
+		dispatch(pokemonActions.removePokemonFromFav(pokemonId));
 	};
 };
 

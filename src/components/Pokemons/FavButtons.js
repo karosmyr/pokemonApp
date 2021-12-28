@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addPokemonToFav, removePokemonFromFav } from '../../store/pokeActions';
+import { addPokemonToFav, removePokemonFromFav } from '../../store/pokemon-actions';
 
 const FavButtons = (props) => {
 	const dispatch = useDispatch();

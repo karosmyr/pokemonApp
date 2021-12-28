@@ -1,16 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-	getChosenType,
-	getChosenSubtype,
-	getChosenName,
-} from '../../store/pokeActions';
+import { getChosenType, getChosenSubtype, getChosenName } from '../../store/pokemon-actions';
 import './PokemonsFilter.scss';
 
 const PokemonsFilter = () => {
 	const dispatch = useDispatch();
-	const pokeData = useSelector((state) => state.pokemons);
-	const [enteredName, setEnteredName] = useState(pokeData.name);
+	const filterData = useSelector((state) => state.filter);
+	const [enteredName, setEnteredName] = useState(filterData.name);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -41,9 +37,9 @@ const PokemonsFilter = () => {
 				/>
 			</div>
 			<div className='filter__container-item'>
-				<select value={pokeData.chosenType} onChange={changeTypeHandler}>
+				<select value={filterData.chosenType} onChange={changeTypeHandler}>
 					<option value=''>All types</option>
-					{pokeData.types.map((type) => {
+					{filterData.types.map((type) => {
 						return (
 							<option key={type} value={`%20types:${type}`}>
 								{type}
@@ -54,11 +50,11 @@ const PokemonsFilter = () => {
 			</div>
 			<div className='filter__container-item'>
 				<select
-					value={pokeData.chosenSubtype.replace(/[.]/g, ' ')}
+					value={filterData.chosenSubtype.replace(/[.]/g, ' ')}
 					onChange={changeSubtypeHandler}
 				>
 					<option value=''>All subtypes</option>
-					{pokeData.subtypes.map((subtype) => {
+					{filterData.subtypes.map((subtype) => {
 						return (
 							<option key={subtype} value={`%20subtypes:${subtype}`}>
 								{subtype}

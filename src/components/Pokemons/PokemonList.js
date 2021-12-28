@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeCurrentPage } from '../../store/pokeActions';
+import { changeCurrentPage } from '../../store/pokemon-actions';
 import LoadingSpinner from '../UI/LoadingSpinner';
 import PokemonItem from './PokemonItem';
 import Pagination from '../Pagination/Pagination';
@@ -9,6 +9,7 @@ import './PokemonList.scss';
 const PokemonList = () => {
 	const dispatch = useDispatch();
 	const pokeData = useSelector((state) => state.pokemons);
+	const filterData = useSelector((state) => state.filter);
 
 	return (
 		<>
@@ -34,8 +35,8 @@ const PokemonList = () => {
 						{pokeData.pokemons.length === 0 && <p className='item__container-empty'>No results. Please change the filter requirements.</p>}
 					</ul>
 					<Pagination
-						currentPage={pokeData.currentPage}
-						pageSize={pokeData.pageSize}
+						currentPage={filterData.currentPage}
+						pageSize={filterData.pageSize}
 						totalCount={pokeData.totalCount}
 						onPageChange={(page) => dispatch(changeCurrentPage(page))}
 					/>
