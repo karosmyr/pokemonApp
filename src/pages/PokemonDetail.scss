@@ -1,0 +1,168 @@
+@import '../colors';
+
+.detailHeader {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 0.5em 0 1em 0;
+	border-bottom: 1px solid $active;
+
+	&__heading {
+		font-size: 2.2rem;
+		align-self: start;
+		margin-right: 1.5em;
+	}
+	&__button {
+		margin-top: 0.5em;
+		padding: 0.8em;
+		width: 17em;
+		background-color: $favBtn;
+		font-weight: bold;
+		color: white;
+		border: 1px solid $black;
+		border-radius: 8px;
+		cursor: pointer;
+		outline: none;
+		transition: background-color ease-in-out 0.2s;
+
+		&:hover,
+		&:active {
+			background-color: $favBtnHover;
+		}
+	}
+
+	&__logo {
+		position: absolute;
+		top: 10px;
+		right: 0;
+	}
+}
+
+.detail {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 1em 0;
+	border-bottom: 1px solid $active;
+
+	&__img {
+		width: 260px;
+	}
+
+	&__item {
+		width: 280px;
+		margin: 0.3em;
+
+		&-img {
+			text-align: center;
+		}
+
+		&--start {
+			margin-top: 0.5em;
+		}
+		&-desc {
+			font-weight: bold;
+			font-size: 1.1rem;
+			background-color: $backgroundDesc;
+		}
+		&-text {
+			margin: 0.2em 0;
+		}
+	}
+
+	&__attack {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+		padding: 1em 1em;
+
+		&-heading {
+			width: 280px;
+			font-size: 1.4rem;
+			padding-bottom: 0.5em;
+		}
+		&-item {
+			margin: 0.2em 0;
+			&.damage {
+				color: $damageColor;
+			}
+			&.energy {
+				color: $energyColor;
+				padding-bottom: 0.5em;
+			}
+			&--bold {
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.detailHeader {
+		&__heading {
+			font-size: 2.4rem;
+			align-self: center;
+			margin: 0;
+		}
+	}
+	.detail {
+		&__item {
+			width: 380px;
+		}
+
+		&__attack {
+			margin: 0 4em;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+
+
+	.detail {
+		flex-direction: row;
+		align-self: center;
+
+		&__img {
+			width: 360px;
+		}
+
+		&__item {
+			width: 380px &-img {
+				padding: 0.75em;
+			}
+
+			&--start {
+				margin-top: 0.5em;
+			}
+			&-desc {
+				font-weight: bold;
+				background-color: $backgroundDesc;
+			}
+		}
+	}
+}
+@media (min-width: 992px) {
+	.detailHeader {
+		flex-direction: row;
+		justify-content: space-around;
+
+		&__button {
+			width: 20em;
+			margin: 0;
+		}
+	}
+
+}
+
+@media (min-width: 1200px) {
+	.detail {
+		&__attack {
+			margin: 0em 10em;
+		}
+	}
+}

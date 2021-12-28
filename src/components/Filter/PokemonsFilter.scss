@@ -1,0 +1,55 @@
+@import '../../colors';
+
+.filter__container {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		& select,
+		& input {
+			width: 250px;
+			margin: 0.2rem;
+			padding: 0.1rem 0.3rem;
+			border-radius: 6px;
+			border: 1px solid black;
+			font: inherit;
+			outline: none;
+			background-color: white;
+
+			&:active,
+			&:focus {
+				border-color: $active;
+				box-shadow: 0 0 4px $active;
+			}
+		}
+		& select {
+			cursor: pointer;
+		}
+		& input {
+			cursor: inherit;
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.filter__container {
+        font-size: 1.1rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.filter__container {
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+}
+
+

@@ -1,0 +1,67 @@
+@import '../../colors';
+.link {
+    text-decoration: none;
+}
+
+.item {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform ease-in-out .3s;
+
+    &__title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 0.3rem;
+    }
+
+    &__img {
+        position: relative;
+        
+        &-img {
+            width: 245px;
+        }
+    }
+
+    &__overlay {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        border-radius: 8px;
+        position: absolute;
+        background: rgba(0,0,0,0.4);
+        width: 245px;
+        transition: ease-in-out .3s;
+        text-align: center;
+        opacity: 0;
+
+        &-details {
+            color: white;
+            background-color: $favBtn;
+            font-size: 0.9rem;
+            padding: 0.5em 1em;
+            border: 1px solid $black;
+            border-radius: 8px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $favBtnHover;
+            }
+        }
+    }
+
+    &:hover {
+        transform: scale(1.05);
+
+        .item__overlay {
+            opacity: 1;
+        }
+    }
+}
+
